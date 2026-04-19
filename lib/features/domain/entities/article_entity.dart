@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class ArticleModel extends Equatable{
+class ArticleEntity extends Equatable{
   final String title;
   final String ? description;
   final String sourceName;
@@ -9,7 +9,7 @@ class ArticleModel extends Equatable{
   final String ? urlToImage;
   final String ? author;
 
-  const ArticleModel({
+  const ArticleEntity({
     required this.title,
     this.description,
     required this.sourceName,
