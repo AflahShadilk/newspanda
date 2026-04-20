@@ -41,6 +41,7 @@ class NewsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<NewsBloc>(),
+      
       child: MaterialApp(
         title: 'News Reader',
         debugShowCheckedModeBanner: false,

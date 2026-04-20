@@ -6,6 +6,7 @@ import 'package:newspanda/core/theme/app_theme.dart';
 import 'package:newspanda/features/presentation/bloc/news_bloc.dart';
 import 'package:newspanda/features/presentation/bloc/news_event.dart';
 import 'package:newspanda/features/presentation/bloc/news_state.dart';
+import 'package:newspanda/features/presentation/bloc/web_view_cubit.dart';
 import 'package:newspanda/features/presentation/pages/article_web_view_page.dart';
 import 'package:newspanda/features/presentation/widgets/article_card.dart';
 import 'package:newspanda/features/presentation/widgets/category_chip_bar.dart';
@@ -172,9 +173,12 @@ class NewsListPage extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (_) => ArticleWebViewPage(
-                  url: article.url,
-                  title: article.sourceName,
+                builder: (_) => BlocProvider(
+                  create: (_) => WebViewCubit(),
+                  child: ArticleWebViewPage(
+                    url: article.url,
+                    title: article.sourceName,
+                  ),
                 ),
               ),
             ),
@@ -184,7 +188,7 @@ class NewsListPage extends StatelessWidget {
     );
   }
 
-  //Empty state 
+  //Empty state
   Widget _emptyState() {
     return Center(
       child: Column(
@@ -222,7 +226,7 @@ class NewsListPage extends StatelessWidget {
     );
   }
 
-  //Helper 
+  //Helper
   String _greeting() {
     final hour = DateTime.now().hour;
     if (hour < 12) return 'Good Morning ☀️';
