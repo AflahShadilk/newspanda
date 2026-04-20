@@ -7,16 +7,17 @@ import 'package:newspanda/features/data/repository/repository_impl.dart';
 import 'package:newspanda/features/domain/repository/news_repository.dart';
 import 'package:newspanda/features/domain/usecases/get_top_headlines.dart';
 import 'package:newspanda/features/domain/usecases/search_articles.dart';
+import 'package:newspanda/features/presentation/bloc/news_bloc.dart';
 
 final sl=GetIt.instance;
 Future<void> init() async {
-  // // BLoC
-  // sl.registerFactory(
-  //   () => NewsBloc(
-  //     getTopHeadlines: sl(),
-  //     searchArticles: sl(),
-  //   ),
-  // );
+  // BLoC
+  sl.registerFactory(
+    () => NewsBloc(
+      getTopHeadlines: sl(),
+      searchArticles: sl(),
+    ),
+  );
 
   // Use cases
   sl.registerLazySingleton(() => GetTopHeadlines(sl()));
